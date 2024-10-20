@@ -102,17 +102,18 @@ namespace CBurgPinball {
         if (ledid == LedId.Led1) {
             pins.digitalWritePin(DigitalPin.P12, 0);
             pins.digitalWritePin(DigitalPin.P13, 1);
+            basic.showNumber( 1);
         }
-        else
-            if (ledid == LedId.Led2) {
-                pins.digitalWritePin(DigitalPin.P12, 1);
-                pins.digitalWritePin(DigitalPin.P13, 0);
-            }
-            else
-                if (ledid == LedId.Led3) {
-                    pins.digitalWritePin(DigitalPin.P12, 1);
-                    pins.digitalWritePin(DigitalPin.P13, 1);
-                }
+        if (ledid == LedId.Led2) {
+            pins.digitalWritePin(DigitalPin.P12, 1);
+            pins.digitalWritePin(DigitalPin.P13, 0);
+            basic.showNumber(2);
+        }
+        if (ledid == LedId.Led3) {
+            pins.digitalWritePin(DigitalPin.P12, 1);
+            pins.digitalWritePin(DigitalPin.P13, 1);
+            basic.showNumber(3);
+        }
         // set the color
         if (colorid == ColorId.Off) {
             pins.digitalWritePin(DigitalPin.P14, 0);
@@ -158,6 +159,7 @@ namespace CBurgPinball {
         pins.digitalWritePin(DigitalPin.P0, 1);
         while (!pins.digitalReadPin(DigitalPin.P3));
         pins.digitalWritePin(DigitalPin.P0, 0);
+        basic.clearScreen();
     }
 
     //% block="show %mediaid"
