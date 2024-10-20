@@ -96,8 +96,8 @@ namespace CBurgPinball {
     //% block.loc.nl="kleur %ledid %state"
     export function switchled(ledid: LedId, colorid: ColorId) {
         // do not change media
-        pins.digitalWritePin(DigitalPin.P19, 0)
-        pins.digitalWritePin(DigitalPin.P20, 0)
+        pins.digitalWritePin(DigitalPin.P2, 0)
+        pins.digitalWritePin(DigitalPin.P3, 0)
         // choose the led
         if (ledid == LedId.Led1) {
             pins.digitalWritePin(DigitalPin.P12, 0);
@@ -155,9 +155,9 @@ namespace CBurgPinball {
             pins.digitalWritePin(DigitalPin.P16, 1);
         }
         // communicate to raspberry
-        pins.digitalWritePin(DigitalPin.P0, 1);
-        while (!pins.digitalReadPin(DigitalPin.P3));
-        pins.digitalWritePin(DigitalPin.P0, 1);
+        pins.digitalWritePin(DigitalPin.P19, 1);
+        while (!pins.digitalReadPin(DigitalPin.P20));
+        pins.digitalWritePin(DigitalPin.P19, 0);
     }
 
     //% block="show %mediaid"
@@ -182,9 +182,9 @@ namespace CBurgPinball {
             pins.digitalWritePin(DigitalPin.P20, 0);
         }
         // communicate to raspberry
-        pins.digitalWritePin(DigitalPin.P0, 1);
-        while (!pins.digitalReadPin(DigitalPin.P3));
-        pins.digitalWritePin(DigitalPin.P0, 1);
+        pins.digitalWritePin(DigitalPin.P19, 1);
+        while (!pins.digitalReadPin(DigitalPin.P20));
+        pins.digitalWritePin(DigitalPin.P19, 0);
     }
 
     //% block="on thru %gate"
