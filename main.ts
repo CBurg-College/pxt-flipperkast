@@ -1,3 +1,7 @@
+pins.digitalReadPin(DigitalPin.P1)
+pins.digitalReadPin(DigitalPin.P2)
+pins.digitalReadPin(DigitalPin.P3)
+
 //% color="#00CC00" icon="\u2B88"
 //% block="Pinball"
 //% block.loc.nl="Flipperkast"
