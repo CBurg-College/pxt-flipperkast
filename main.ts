@@ -157,36 +157,6 @@ namespace CBurgPinball {
         pins.digitalWritePin(DigitalPin.P0, 1);
     }
 
-    //% block="background"
-    //% block.loc.nl="achtergrond"
-    export function background(): MediaId {
-        return MediaId.Background;
-    }
-
-    //% block="video 1"
-    //% block.loc.nl="video 1"
-    export function video1(): MediaId {
-        return MediaId.Video1;
-    }
-
-    //% block="video 2"
-    //% block="video 2"
-    export function video2(): MediaId {
-        return MediaId.Video2;
-    }
-
-    //% block="gate 1"
-    //% block.loc.nl="poortje 1"
-    export function gate1(): Gate {
-        return Gate.Gate1;
-    }
-
-    //% block="gate 2"
-    //% block.loc.nl="poortje 2"
-    export function gate2(): Gate {
-        return Gate.Gate2;
-    }
-
     //% block="not thru a gate"
     //% block.loc.nl="niet door een poortje"
     export function notThruGate(): boolean {
@@ -221,5 +191,11 @@ namespace CBurgPinball {
             control.waitMicros(100);
             pins.digitalWritePin(DigitalPin.P12, 0);
         }
+    }
+
+    //% block="wait %time sec"
+    //% block.loc.nl="wacht %time sec"
+    export function wait(time: number) {
+        basic.pause(time * 1000);
     }
 }
