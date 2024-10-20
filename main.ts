@@ -96,23 +96,23 @@ namespace CBurgPinball {
     //% block.loc.nl="kleur %ledid %state"
     export function switchled(ledid: LedId, colorid: ColorId) {
         // do not change media
-        pins.digitalWritePin(DigitalPin.P2, 0)
-        pins.digitalWritePin(DigitalPin.P3, 0)
+        pins.digitalWritePin(DigitalPin.P19, 0)
+        pins.digitalWritePin(DigitalPin.P20, 0)
         // choose the led
         if (ledid == LedId.Led1) {
             pins.digitalWritePin(DigitalPin.P12, 0);
             pins.digitalWritePin(DigitalPin.P13, 1);
         }
         else
-        if (ledid == LedId.Led2) {
-            pins.digitalWritePin(DigitalPin.P12, 1);
-            pins.digitalWritePin(DigitalPin.P13, 0);
-        }
-        else
-        if (ledid == LedId.Led3) {
-            pins.digitalWritePin(DigitalPin.P12, 1);
-            pins.digitalWritePin(DigitalPin.P13, 1);
-        }
+            if (ledid == LedId.Led2) {
+                pins.digitalWritePin(DigitalPin.P12, 1);
+                pins.digitalWritePin(DigitalPin.P13, 0);
+            }
+            else
+                if (ledid == LedId.Led3) {
+                    pins.digitalWritePin(DigitalPin.P12, 1);
+                    pins.digitalWritePin(DigitalPin.P13, 1);
+                }
         // set the color
         if (colorid == ColorId.Off) {
             pins.digitalWritePin(DigitalPin.P14, 0);
@@ -155,14 +155,14 @@ namespace CBurgPinball {
             pins.digitalWritePin(DigitalPin.P16, 1);
         }
         // communicate to raspberry
-        pins.digitalWritePin(DigitalPin.P19, 1);
-        while (!pins.digitalReadPin(DigitalPin.P20));
-        pins.digitalWritePin(DigitalPin.P19, 0);
+        pins.digitalWritePin(DigitalPin.P0, 1);
+        while (!pins.digitalReadPin(DigitalPin.P3));
+        pins.digitalWritePin(DigitalPin.P0, 0);
     }
 
     //% block="show %mediaid"
     //% block.loc.nl="toon %mediaid"
-    export function show( mediaid: MediaId) {
+    export function show(mediaid: MediaId) {
         // do not change rgb-leds
         pins.digitalWritePin(DigitalPin.P12, 0)
         pins.digitalWritePin(DigitalPin.P13, 0)
@@ -172,19 +172,19 @@ namespace CBurgPinball {
             pins.digitalWritePin(DigitalPin.P20, 1);
         }
         else
-        if (mediaid == MediaId.Video1) {
-            pins.digitalWritePin(DigitalPin.P19, 0);
-            pins.digitalWritePin(DigitalPin.P20, 1);
-        }
-        else
-        if (mediaid == MediaId.Video2) {
-            pins.digitalWritePin(DigitalPin.P19, 1);
-            pins.digitalWritePin(DigitalPin.P20, 0);
-        }
+            if (mediaid == MediaId.Video1) {
+                pins.digitalWritePin(DigitalPin.P19, 0);
+                pins.digitalWritePin(DigitalPin.P20, 1);
+            }
+            else
+                if (mediaid == MediaId.Video2) {
+                    pins.digitalWritePin(DigitalPin.P19, 1);
+                    pins.digitalWritePin(DigitalPin.P20, 0);
+                }
         // communicate to raspberry
-        pins.digitalWritePin(DigitalPin.P19, 1);
-        while (!pins.digitalReadPin(DigitalPin.P20));
-        pins.digitalWritePin(DigitalPin.P19, 0);
+        pins.digitalWritePin(DigitalPin.P0, 1);
+        while (!pins.digitalReadPin(DigitalPin.P3));
+        pins.digitalWritePin(DigitalPin.P0, 0);
     }
 
     //% block="on thru %gate"
