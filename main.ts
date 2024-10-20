@@ -210,6 +210,16 @@ namespace CBurgPinball {
 
     //% block="on thru %gate"
     //% block.loc.nl="wanneer door %gate"
-    export function onEvent( gate: Gate, handler: () => void) {
+    export function onEvent(gate: Gate, handler: () => void) {
+        if (gate == Gate.Gate1) {
+            pins.digitalWritePin(DigitalPin.P11, 1);
+            control.waitMicros(100);
+            pins.digitalWritePin(DigitalPin.P11, 0);
+        }
+        if (gate == Gate.Gate2) {
+            pins.digitalWritePin(DigitalPin.P12, 1);
+            control.waitMicros(100);
+            pins.digitalWritePin(DigitalPin.P12, 0);
+        }
     }
 }
