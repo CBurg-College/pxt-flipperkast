@@ -1,6 +1,4 @@
-pins.digitalReadPin(DigitalPin.P1)
-pins.digitalReadPin(DigitalPin.P2)
-pins.digitalReadPin(DigitalPin.P3)
+pins.setPull(DigitalPin.P0, PinPullMode.PullUp)
 
 //% color="#00CC00" icon="\u2B88"
 //% block="Pinball"
