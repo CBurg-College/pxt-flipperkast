@@ -27,21 +27,26 @@ namespace CBurgPinball {
     //% block="show %mediaid"
     //% block.loc.nl="toon %mediaid"
     export function show( mediaid: MediaId) {
+        // do not change rgb-leds
+        pins.digitalWritePin(DigitalPin.P12, 0)
+        pins.digitalWritePin(DigitalPin.P13, 0)
+        // choose the medium
         if (mediaid == MediaId.Background) {
-            pins.digitalWritePin( DigitalPin.P10, 1);
-            control.waitMicros( 100);
-            pins.digitalWritePin( DigitalPin.P10, 0);
+            pins.digitalWritePin(DigitalPin.P19, 1);
+            pins.digitalWritePin(DigitalPin.P20, 1);
         }
         if (mediaid == MediaId.Video1) {
-            pins.digitalWritePin( DigitalPin.P11, 1);
-            control.waitMicros( 100);
-            pins.digitalWritePin( DigitalPin.P11, 0);
+            pins.digitalWritePin(DigitalPin.P19, 1);
+            pins.digitalWritePin(DigitalPin.P20, 0);
         }
         if (mediaid == MediaId.Video2) {
-            pins.digitalWritePin( DigitalPin.P12, 1);
-            control.waitMicros( 100);
-            pins.digitalWritePin( DigitalPin.P12, 0);
+            pins.digitalWritePin(DigitalPin.P19, 0);
+            pins.digitalWritePin(DigitalPin.P20, 1);
         }
+        // communicate to raspberry
+        pins.digitalWritePin(DigitalPin.P0, 1);
+        while (!pins.digitalReadPin(DigitalPin.P3));
+        pins.digitalWritePin(DigitalPin.P0, 1);
     }
 
     //% block="background"
@@ -98,15 +103,5 @@ namespace CBurgPinball {
     //% block="on thru %gate"
     //% block.loc.nl="wanneer door %gate"
     export function onEvent( gate: Gate, handler: () => void) {
-        if ( gate == Gate.Gate1 ) {
-            pins.digitalWritePin( DigitalPin.P11, 1);
-            control.waitMicros( 100);
-            pins.digitalWritePin( DigitalPin.P11, 0);
-        }
-        if ( gate == Gate.Gate2 ) {
-            pins.digitalWritePin( DigitalPin.P12, 1);
-            control.waitMicros( 100);
-            pins.digitalWritePin( DigitalPin.P12, 0);
-        }
     }
 }
