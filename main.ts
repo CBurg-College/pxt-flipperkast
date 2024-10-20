@@ -1,4 +1,4 @@
-pins.setPull(DigitalPin.P0, PinPullMode.PullUp)
+pins.setPull(DigitalPin.P3, PinPullMode.PullUp)
 
 //% color="#00CC00" icon="\u2B88"
 //% block="Pinball"
