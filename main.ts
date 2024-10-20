@@ -3,7 +3,7 @@
 //% block.loc.nl="Flipperkast"
 namespace CBurgPinball {
 
-    enum Gate {
+    export enum Gate {
         //% block="gate 1"
         //% block.loc.nl="poortje 1"
         Gate1,
@@ -12,7 +12,7 @@ namespace CBurgPinball {
         Gate2
     }
 
-    enum LedId {
+    export enum LedId {
         //% block="led 1"
         //% block.loc.nl="led 1"
         Led1,
@@ -24,7 +24,7 @@ namespace CBurgPinball {
         Led3
     }
 
-    enum ColorId {
+    export enum ColorId {
         //% block="dark"
         //% block.loc.nl="donker"
         Off,
