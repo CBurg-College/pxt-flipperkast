@@ -50,6 +50,7 @@ namespace CBurgPinball {
         //% block.loc.nl="wit"
         White
     }
+
     export enum MediaId {
         //% block="background"
         //% block.loc.nl="achtergrond"
@@ -60,6 +61,33 @@ namespace CBurgPinball {
         //% block="video 2"
         //% block.loc.nl="video 2"
         Video2
+    }
+
+    //% block="not thru a gate"
+    //% block.loc.nl="niet door een poortje"
+    export function notThruGate(): boolean {
+        if (pins.digitalReadPin(DigitalPin.P1) ||
+            pins.digitalReadPin(DigitalPin.P2))
+            return false;
+        return true;
+    }
+
+    //% block="thru gate 2"
+    //% block.loc.nl="door poortje 2"
+    export function thruGate2(): boolean {
+        return (pins.digitalReadPin(DigitalPin.P2) == 1);
+    }
+
+    //% block="thru gate 1"
+    //% block.loc.nl="door poortje 1"
+    export function thruGate1(): boolean {
+        return (pins.digitalReadPin(DigitalPin.P1) == 1);
+    }
+
+    //% block="wait %time sec"
+    //% block.loc.nl="wacht %time sec"
+    export function wait(time: number) {
+        basic.pause(time * 1000);
     }
 
     //% block="color %ledid %state"
@@ -157,27 +185,6 @@ namespace CBurgPinball {
         pins.digitalWritePin(DigitalPin.P0, 1);
     }
 
-    //% block="not thru a gate"
-    //% block.loc.nl="niet door een poortje"
-    export function notThruGate(): boolean {
-        if ( pins.digitalReadPin( DigitalPin.P1) ||
-             pins.digitalReadPin( DigitalPin.P2) )
-            return false;
-        return true;
-    }
-
-    //% block="thru gate 1"
-    //% block.loc.nl="door poortje 1"
-    export function thruGate1(): boolean {
-        return (pins.digitalReadPin( DigitalPin.P1) == 1);
-    }
-
-    //% block="thru gate 2"
-    //% block.loc.nl="door poortje 2"
-    export function thruGate2(): boolean {
-        return (pins.digitalReadPin( DigitalPin.P2) == 1);
-    }
-
     //% block="on thru %gate"
     //% block.loc.nl="wanneer door %gate"
     export function onEvent(gate: Gate, handler: () => void) {
@@ -191,11 +198,5 @@ namespace CBurgPinball {
             control.waitMicros(100);
             pins.digitalWritePin(DigitalPin.P12, 0);
         }
-    }
-
-    //% block="wait %time sec"
-    //% block.loc.nl="wacht %time sec"
-    export function wait(time: number) {
-        basic.pause(time * 1000);
     }
 }
