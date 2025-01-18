@@ -30,7 +30,7 @@ let HIGH = 1
 
 pins.setPull(PIN_DRECEIVED, PinPullMode.PullUp)
 
-//% color="#00CC00" icon="\u2B88"
+//% color="#00CC00" icon="\uf1f9"
 //% block="Pinball"
 //% block.loc.nl="Flipperkast"
 namespace CBurgPinball {
